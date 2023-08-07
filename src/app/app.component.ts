@@ -5,30 +5,32 @@ import { City } from './city';
 @Component({
   selector: 'app-root',
   template: `
-  <h1>Countries and Cities</h1>
-  <ul>
-    <li *ngFor="let country of countries">
-      {{ country.name }} (Capital: {{ country.capital }}) - Population: {{ country.population }}
-      <ul>
-        <li *ngFor="let city of getCitiesByCountry(country.name)">
-          {{ city.name }} - Population: {{ city.population }}
+  <div class="container mt-5">
+    <h1 class="mb-4">Countries and Cities</h1>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let country of countries">
+            <strong>{{ country.name }}</strong> (Capital: {{ country.capital }}) - Population: {{ country.population }}
+            <ul class="mt-2">
+                <li *ngFor="let city of getCitiesByCountry(country.name || 'DefaultCountry')">
+                    {{ city.name }} - Population: {{ city.population }}
+                </li>
+            </ul>
         </li>
-      </ul>
-    </li>
-  </ul>
-`
+    </ul>
+</div>
+`,
 styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   countries: Country[] = [
     {
-      name: 'Contry 1',
+      name: 'Country 1',
       capital: 'Capital 1',
       population: 1000000,
     }
   ];
 
-  ciities: City[] = [
+  cities: City[] = [
     {
       name: 'City 1',
       population: 500000,

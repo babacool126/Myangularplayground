@@ -1,5 +1,5 @@
 export class Country {
-    name: string;
-    capital: string;
-    population: number;
+    name?: string;
+    capital?: string;
+    population?: number;
 }
